@@ -24,4 +24,4 @@
   if (authStore.isLoggedIn) {
     navigateTo("./profile");
   }
-</script>
+</script> 

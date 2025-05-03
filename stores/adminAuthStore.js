@@ -6,7 +6,6 @@ export const useAdminAuthStore = defineStore('adminAuth', () => {
     return { loggedInData, isLoggedIn }
 }, {
     persist: {
-        // storage: persistedState.cookies,
-        Storage: createPersistedState
-    }
+        storage: piniaPluginPersistedstate.cookies(),
+      }
 })
