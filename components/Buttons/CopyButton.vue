@@ -8,7 +8,7 @@
       <p>{{ valueToCopy ?? "" }}</p>
       <span
         :class="[
-          'opacity-0 group-hover:opacity-100 base-trans text-white font-semibold rounded focus:outline-none ',
+          'opacity-0 group-hover:opacity-100 base-trans text-white font-semibold rounded-sm focus:outline-hidden ',
           iconClass,
           copied ? 'bg-blue-500' : 'bg-blue-500 hover:bg-blue-600',
         ]"

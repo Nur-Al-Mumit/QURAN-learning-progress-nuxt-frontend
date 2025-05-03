@@ -18,14 +18,14 @@
       <div class="flex justify-between mt-4">
         <!-- <button
           type="button"
-          class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md shadow-xs hover:bg-gray-400 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
         >
           Cancel
         </button> -->
         <button
           :disabled="isDisable"
           type="submit"
-          class="bg-black text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-700 base-trans"
+          class="bg-black text-white py-2 px-4 rounded-md shadow-xs hover:bg-gray-700 base-trans"
         >
           Save
         </button>

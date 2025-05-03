@@ -1,5 +1,5 @@
 <template>
-  <section class="sm:w-[300px] bg-white shadow sm:min-h-[80vh] sticky top-5">
+  <section class="sm:w-[300px] bg-white shadow-sm sm:min-h-[80vh] sticky top-5">
     <aside class="">
       <div class="mb-2 pt-3 text-2xl text-center text-blue-500 base-trans">
         <div class="flex items-center sm:justify-center mb-3 text-left">

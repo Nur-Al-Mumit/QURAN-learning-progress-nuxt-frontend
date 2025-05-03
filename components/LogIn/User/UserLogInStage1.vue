@@ -32,7 +32,7 @@
             <div class="relative">
               <button
                 type="button"
-                class="flex items-center gap-3 sm:gap-10 font-bold border border-gray-400 py-3 px-3 sm:px-5 w-full hover:bg-gray-200 base-trans rounded text-center"
+                class="flex items-center gap-3 sm:gap-10 font-bold border border-gray-400 py-3 px-3 sm:px-5 w-full hover:bg-gray-200 base-trans rounded-sm text-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@
             <div class="mt-2 relative">
               <button
                 type="button"
-                class="flex items-center gap-3 sm:gap-10 font-bold border border-gray-400 py-3 px-3 sm:px-5 w-full hover:bg-gray-200 base-trans rounded"
+                class="flex items-center gap-3 sm:gap-10 font-bold border border-gray-400 py-3 px-3 sm:px-5 w-full hover:bg-gray-200 base-trans rounded-sm"
               >
                 <svg
                   width="24"
@@ -111,7 +111,7 @@
             <button
               type="submit"
               :disabled="isDisable"
-              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-gray-700 hover:text-white base-trans rounded mt-3 flex justify-center text-black"
+              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-gray-700 hover:text-white base-trans rounded-sm mt-3 flex justify-center text-black"
             >
               <span class="relative">
                 Continue with Email
@@ -149,7 +149,7 @@
           <button
             type="submit"
             :disabled="isDisable"
-            class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded flex justify-center"
+            class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded-sm flex justify-center"
           >
             <span>Sign Up</span>
             <span

@@ -1,6 +1,103 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 2100px;
+
+  --color-primary: #2d75c8;
+
+  --animate-fade-in-up: fade-in-up 0.7s ease forwards;
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility base-trans {
+  @apply transition-all duration-300;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility base-blank-btn {
+  @apply border border-blue-500 px-5 py-2 text-blue-500 font-bold cursor-pointer hover:bg-blue-500 base-trans hover:text-white flex gap-1 rounded-sm;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility base-width {
+  @apply w-[95%] sm:w-[80%] 3xl:w-[70%] 4xl:w-[50%] mx-auto;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility job-search-input-container {
+  @apply flex items-center bg-gray-100 pl-1 sm:pl-3 w-full;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility job-search-input {
+  @apply bg-gray-100 text-[16px] sm:text-xl pl-1 py-2 w-full focus:outline-hidden rounded-r-full;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility doc-upload-layout {
+  @apply my-3 p-2 border rounded-md sm:flex justify-between space-y-5 sm:space-y-0 gap-3;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility recruitment-form-container {
+  @apply bg-white p-2 sm:p-6 shadow-md animate-fade-in-up;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility dynamic-inputs-row {
+  /* Dynamic input form's utility design */
+  @apply my-10 bg-white border border-gray-400 rounded-sm;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility dynamic-action-container {
+  @apply sm:absolute top-3 right-3 flex gap-2 flex-row-reverse justify-between items-center;
+
+  /* Dynamic input form's utility design */
+}
+
+@utility dynamic-action-edit-btn {
+  @apply base-blank-btn w-fit text-center text-blue-600 hover:bg-blue-600 border-blue-600 items-center px-2;
+
+  /* Dynamic input form's utility design */
+}
 
 @layer base {
     @font-face {
@@ -15,55 +112,10 @@
         font-family: Roboto;
         src: url(../fonts/Roboto-Regular.ttf) format('truetype'),
             url(../fonts/Roboto-Medium.ttf) format('truetype'),
-            url(../fonts/Roboto-Bold.ttf) format('truetype'),
+            url(../fonts/Roboto-Bold.ttf) format('truetype'),;
     }
 
     body {
         font-family: 'Roboto', 'kalpurush';
     }
-}
-
-@layer components {
-    .base-trans {
-        @apply transition-all duration-300
-    }
-
-    .base-blank-btn {
-        @apply border border-blue-500 px-5 py-2 text-blue-500 font-bold cursor-pointer hover:bg-blue-500 base-trans hover:text-white flex gap-1 rounded
-    }
-
-    .base-width {
-        @apply w-[95%] sm:w-[80%] 3xl:w-[70%] 4xl:w-[50%] mx-auto
-    }
-
-    .job-search-input-container {
-        @apply flex items-center bg-gray-100 pl-1 sm:pl-3 w-full;
-    }
-
-    .job-search-input {
-        @apply bg-gray-100 text-[16px] sm:text-xl pl-1 py-2 w-full focus:outline-none rounded-r-full;
-    }
-
-    .doc-upload-layout {
-        @apply my-3 p-2 border rounded-md sm:flex justify-between space-y-5 sm:space-y-0 gap-3;
-    }
-
-    .recruitment-form-container {
-        @apply bg-white p-2 sm:p-6 shadow-md animate-fade-in-up;
-    }
-
-    /* Dynamic input form's utility design */
-    .dynamic-inputs-row {
-        @apply my-10 bg-white border border-gray-400 rounded;
-    }
-
-    .dynamic-action-container {
-        @apply sm:absolute top-3 right-3 flex gap-2 flex-row-reverse justify-between items-center;
-    }
-
-    .dynamic-action-edit-btn {
-        @apply base-blank-btn w-fit text-center text-blue-600 hover:bg-blue-600 border-blue-600 items-center px-2;
-    }
-
-    /* Dynamic input form's utility design */
 }

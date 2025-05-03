@@ -3,7 +3,7 @@
     <button
       @click="handleClick"
       :class="[
-        'border border-black text-black hover:bg-black hover:text-white px-5 py-2  font-bold cursor-pointer  base-trans  flex gap-1 rounded group',
+        'border border-black text-black hover:bg-black hover:text-white px-5 py-2  font-bold cursor-pointer  base-trans  flex gap-1 rounded-sm group',
         customStyle,
         direction === 'left' ? 'flex-row-reverse' : 'flex-row',
       ]"

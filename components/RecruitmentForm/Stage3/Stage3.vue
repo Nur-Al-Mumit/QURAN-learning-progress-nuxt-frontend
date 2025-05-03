@@ -56,7 +56,7 @@
                       type="checkbox"
                       v-model="isEndDate[rowIndex][0]"
                       @change="handleWorkingChange(rowIndex)"
-                      class="form-checkbox h-4 w-6 text-blue-600 rounded transition duration-200 ease-in-out"
+                      class="form-checkbox h-4 w-6 text-blue-600 rounded-sm transition duration-200 ease-in-out"
                     />
                     <span class="text-sm font-medium text-gray-700">
                       Till to Date
@@ -88,7 +88,7 @@
                   :disabled="
                     input.name === 'end_date' && isEndDate[rowIndex][0]
                   "
-                  class="p-3 border rounded-md focus:outline-none focus:border-blue-500 w-full"
+                  class="p-3 border rounded-md focus:outline-hidden focus:border-blue-500 w-full"
                   v-model="inputValues[rowIndex][input.name]"
                 />
 

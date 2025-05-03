@@ -24,7 +24,7 @@
             <div class="relative">
               <button
                 type="button"
-                class="flex items-center gap-3 sm:gap-10 font-bold border border-gray-400 py-3 px-3 sm:px-5 w-full hover:bg-gray-200 base-trans rounded text-center"
+                class="flex items-center gap-3 sm:gap-10 font-bold border border-gray-400 py-3 px-3 sm:px-5 w-full hover:bg-gray-200 base-trans rounded-sm text-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@
             <div class="mt-2 relative">
               <button
                 type="button"
-                class="flex items-center gap-3 sm:gap-10 font-bold border border-gray-400 py-3 px-3 sm:px-5 w-full hover:bg-gray-200 base-trans rounded"
+                class="flex items-center gap-3 sm:gap-10 font-bold border border-gray-400 py-3 px-3 sm:px-5 w-full hover:bg-gray-200 base-trans rounded-sm"
               >
                 <svg
                   width="24"
@@ -94,7 +94,7 @@
                   type="email"
                   inputmode="text"
                   id="email"
-                  class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded"
+                  class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded-sm"
                 />
               </div>
             </div>
@@ -103,7 +103,7 @@
             <button
               type="submit"
               :disabled="isDisable"
-              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded"
+              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded-sm"
             >
               <span>Continue with Email</span>
             </button>

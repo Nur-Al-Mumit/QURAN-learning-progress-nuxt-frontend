@@ -68,7 +68,7 @@
                   "
                   :id="input.id"
                   :placeholder="input.placeholder"
-                  class="p-[14px] border rounded-md focus:outline-none focus:border-blue-500 w-full"
+                  class="p-[14px] border rounded-md focus:outline-hidden focus:border-blue-500 w-full"
                   v-model="inputValues[rowIndex][input.name]"
                 />
 

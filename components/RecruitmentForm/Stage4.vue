@@ -79,7 +79,7 @@
                       ? 'date'
                       : 'text'
                   "
-                  class="p-3 border rounded-md focus:outline-none focus:border-blue-500 w-full"
+                  class="p-3 border rounded-md focus:outline-hidden focus:border-blue-500 w-full"
                   v-model="inputValues[rowIndex][input.name]"
                 />
                 <!-- {{ inputValues[rowIndex]["id"] }} -->

@@ -6,7 +6,7 @@
         v-model="search"
         type="text"
         placeholder="Search..."
-        class="w-full p-2 rounded-full outline-none bg-transparent"
+        class="w-full p-2 rounded-full outline-hidden bg-transparent"
       />
       <div
         v-if="isOpen && filteredItems.length"

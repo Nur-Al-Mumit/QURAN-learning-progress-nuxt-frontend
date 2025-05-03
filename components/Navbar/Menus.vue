@@ -22,10 +22,8 @@
     },
   });
   const menus = [
-    { id: 1, title: "Home", url: "/" },
-    { id: 2, title: "Live Jobs", url: "/jobs" },
-    { id: 3, title: "Circulars", url: "/job-circulars" },
-    { id: 4, title: "Help", url: "/help" },
+    { id: 3, title: "Dashboard", url: "/dashboard" },
+    { id: 2, title: "Attendance", url: "/attendance" },
   ];
 </script>
 

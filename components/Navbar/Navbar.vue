@@ -1,7 +1,7 @@
 <template>
   <header
     :class="[isNavHidden ? 'translate-y-[-100px]' : 'translate-y-0']"
-    class="bg-white fixed left-0 right-0 opacity-100 base-trans border-b z-[999] print:hidden"
+    class="bg-white fixed left-0 right-0 opacity-100 base-trans border-b z-999 print:hidden"
   >
     <nav
       class="flex flex-row justify-between bg-white items-center sm:justify-between base-width"
@@ -109,7 +109,7 @@
             v-if="!isUserOrAdminLoggedIn"
             @click="useStore.stage = 1"
             to="/sign-in"
-            class="flex items-center gap-1 text-white py-2 px-5 bg-black hover:bg-gray-700 base-trans rounded"
+            class="flex items-center gap-1 text-white py-2 px-5 bg-black hover:bg-gray-700 base-trans rounded-sm"
           >
             <span v-html="getIcons('signIn', 'w-[20px]')"></span>
             <span>Sign In</span>
@@ -296,7 +296,7 @@
   });
 </script>
 
-<style scoped>
+<!-- <style scoped>
   @tailwind components;
 
   @layer components {
@@ -304,7 +304,7 @@
       @apply flex items-center bg-gray-100 w-full p-3 sm:p-0 sm:pl-2;
     }
     .job-search-input {
-      @apply bg-gray-100 text-[16px] pl-1 py-2 w-full focus:outline-none rounded-r-full;
+      @apply bg-gray-100 text-[16px] pl-1 py-2 w-full focus:outline-hidden rounded-r-full;
     }
   }
-</style>
+</style> -->

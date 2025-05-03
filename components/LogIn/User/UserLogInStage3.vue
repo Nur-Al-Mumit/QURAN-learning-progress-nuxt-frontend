@@ -13,7 +13,7 @@
                   type="text"
                   inputmode="text"
                   id="email"
-                  class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded"
+                  class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded-sm"
                 />
               </div> -->
               <div class="flex justify-center space-x-2 my-3">
@@ -28,7 +28,7 @@
                   @input="handleInput(index, $event)"
                   @keydown="handleKeydown(index)"
                   @paste="handlePaste($event)"
-                  class="w-12 h-12 border-2 border-gray-300 text-center text-xl font-semibold rounded-md focus:outline-none focus:border-blue-500 appearance-none"
+                  class="w-12 h-12 border-2 border-gray-300 text-center text-xl font-semibold rounded-md focus:outline-hidden focus:border-blue-500 appearance-none"
                 />
               </div>
             </div>
@@ -37,7 +37,7 @@
             <button
               type="submit"
               :disabled="isDisable"
-              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded flex justify-center"
+              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded-sm flex justify-center"
             >
               <span>LogIn</span>
               <span

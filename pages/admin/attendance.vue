@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6">
+  <div class="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-4 sm:p-6">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-6 sm:mb-8">
-        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-linear-to-r from-indigo-600 to-blue-600">
           Attendance Management
         </h1>
         <p class="mt-2 text-sm sm:text-base text-gray-600">
@@ -106,7 +106,7 @@
                 <tr v-for="record in attendanceRecords" :key="record.id" class="hover:bg-gray-50 transition-colors duration-150">
                   <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
-                      <div class="flex-shrink-0 h-10 w-10">
+                      <div class="shrink-0 h-10 w-10">
                         <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
                           <span class="text-indigo-600 font-medium">{{ record.userName.charAt(0) }}</span>
                         </div>

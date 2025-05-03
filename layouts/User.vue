@@ -8,7 +8,7 @@
         <aside class="mb-5 sm:mb-0">
           <SideBar />
         </aside>
-        <div class="w-full scroll-bar-hidden shadow h-fit">
+        <div class="w-full scroll-bar-hidden shadow-sm h-fit">
           <slot />
         </div>
       </div>

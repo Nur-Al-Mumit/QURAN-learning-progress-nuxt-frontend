@@ -9,7 +9,7 @@
 
     <div
       v-for="(languageInput, rowIndex) in languageInputs"
-      :class="'flex flex-col sm:flex-row gap-3 items-center sm:items-end sm:justify-center mt-5 border border-gray-400 p-2 rounded sm:border-none sm:p-0'"
+      :class="'flex flex-col sm:flex-row gap-3 items-center sm:items-end sm:justify-center mt-5 border border-gray-400 p-2 rounded-sm sm:border-none sm:p-0'"
     >
       <div
         v-for="(input, index) in languageInput"

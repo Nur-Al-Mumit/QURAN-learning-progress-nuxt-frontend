@@ -48,7 +48,7 @@
           <button
             @click="(isModel = false), (useStore.currentStep = 1)"
             type="submit"
-            class="gap-10 font-bold border border-gray-400 py-3 px-5 w-fit hover:bg-black hover:text-white base-trans rounded mt-7"
+            class="gap-10 font-bold border border-gray-400 py-3 px-5 w-fit hover:bg-black hover:text-white base-trans rounded-sm mt-7"
           >
             <span>Go to profile</span>
           </button>

@@ -43,14 +43,14 @@
               type="name"
               label="Name"
               v-model="useStore.loginInfo.name"
-              input-class="font-bold border-gray-400 py-3 px-5 !rounded"
+              input-class="font-bold border-gray-400 py-3 px-5 rounded-sm!"
             />
             <InputsBaseInput
               :required="true"
               type="email"
               label="Enter Email"
               v-model="useStore.loginInfo.email"
-              input-class="font-bold border-gray-400 py-3 px-5 !rounded"
+              input-class="font-bold border-gray-400 py-3 px-5 rounded-sm!"
             />
             <InputsBaseInput
               :required="true"
@@ -58,7 +58,7 @@
               type="password"
               label="Password"
               v-model="useStore.loginInfo.password"
-              input-class="font-bold border-gray-400 py-3 px-5 !rounded"
+              input-class="font-bold border-gray-400 py-3 px-5 rounded-sm!"
             />
             <InputsBaseInput
               :required="true"
@@ -66,7 +66,7 @@
               type="password"
               label="Confirm Password"
               v-model="useStore.loginInfo.password_confirmation"
-              input-class="font-bold border-gray-400 py-3 px-5 !rounded "
+              input-class="font-bold border-gray-400 py-3 px-5 rounded-sm! "
             />
 
             <!-- <div class="mt-8 mb-4">
@@ -121,7 +121,7 @@
             <button
               type="submit"
               :disabled="isDisable"
-              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded mt-7 flex justify-center"
+              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded-sm mt-7 flex justify-center"
             >
               <div class="relative">
                 Continue

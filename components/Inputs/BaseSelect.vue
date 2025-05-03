@@ -16,7 +16,7 @@
         @change="handleSelectedOption(selectedOptionStore, $event)"
         :class="[
           selectClass,
-          'appearance-none w-full px-5 py-[10px] border rounded outline-none focus:border-blue-500 base-tran',
+          'appearance-none w-full px-5 py-[10px] border rounded-sm outline-hidden focus:border-blue-500 base-tran',
           disable ? 'opacity-50 cursor-not-allowed bg-gray-200 border-gray-300 text-gray-500' : 'bg-transparent cursor-pointer',
         ]"
       >

@@ -66,7 +66,7 @@
             id="search"
             :placeholder="placeholder"
             v-model="searchInput"
-            class="px-2 py-2 border outline-none appearance-none sm:px-5 sm:py-4 focus:border-blue-500 rounded  base-dark-input"
+            class="px-2 py-2 border outline-hidden appearance-none sm:px-5 sm:py-4 focus:border-blue-500 rounded-sm  base-dark-input"
           />
         </div>
         <button

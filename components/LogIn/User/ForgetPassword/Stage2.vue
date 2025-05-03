@@ -14,7 +14,7 @@
                 v-model="useStore.forgetInfo.password"
                 type="password"
                 id="password"
-                class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded"
+                class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded-sm"
               />
             </div>
 
@@ -24,7 +24,7 @@
                 v-model="useStore.forgetInfo.password_confirmation"
                 type="password"
                 id="confirmPass"
-                class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded"
+                class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded-sm"
               />
             </div>
 
@@ -33,7 +33,7 @@
                 v-model="useStore.forgetInfo.token"
                 type="hidden"
                 id="token"
-                class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded"
+                class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded-sm"
               />
             </div>
           </div>
@@ -56,7 +56,7 @@
             <button
               type="submit"
               :disabled="isDisable"
-              class="gap-3 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded mt-7 flex justify-center items-center"
+              class="gap-3 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded-sm mt-7 flex justify-center items-center"
             >
               <span>Continue</span>
               <span

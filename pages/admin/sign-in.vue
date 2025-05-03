@@ -1,7 +1,7 @@
 <template>
   <section class="flex justify-center bg-gray-50">
     <div
-      class="w-[90vw] sm:w-[400px] my-10 p-10 rounded bg-white shadow-lg hover:shadow-xl base-trans relative"
+      class="w-[90vw] sm:w-[400px] my-10 p-10 rounded-sm bg-white shadow-lg hover:shadow-xl base-trans relative"
     >
       <component :is="logInStages['LogInStage' + useStore.stage]" />
     </div>

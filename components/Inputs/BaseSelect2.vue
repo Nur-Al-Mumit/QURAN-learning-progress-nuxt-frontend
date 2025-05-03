@@ -30,7 +30,7 @@
       <div
         v-if="isOpen"
         :class="[
-          'absolute z-50 mt-2 w-full bg-white border rounded shadow-lg p-1 flex flex-col',
+          'absolute z-50 mt-2 w-full bg-white border rounded-sm shadow-lg p-1 flex flex-col',
           isStartTop ? 'top-[40px]' : 'bottom-[50px]  flex-col-reverse ',
         ]"
       >

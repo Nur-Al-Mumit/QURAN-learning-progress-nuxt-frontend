@@ -2,7 +2,7 @@
   <section
     class="fixed left-0 right-0 bottom-0 top-0 flex justify-center items-center bg-[#27272798] base-trans"
     :class="[
-      isModalOpen ? 'opacity-100 z-[999999]' : 'opacity-0 -z-[999999]',
+      isModalOpen ? 'opacity-100 z-999999' : 'opacity-0 -z-999999',
     ]"
     @click="handleOutsideClick"
   >

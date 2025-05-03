@@ -20,7 +20,7 @@
         ></div>
         <!-- Percentage Label -->
         <div
-          class="absolute top-2 right-2 text-xs font-medium text-gray-700 bg-white bg-opacity-90 px-2 py-0.5 rounded"
+          class="absolute top-2 right-2 text-xs font-medium text-gray-700 bg-white bg-opacity-90 px-2 py-0.5 rounded-sm"
         >
           {{ letter.accuracy }}%
         </div>

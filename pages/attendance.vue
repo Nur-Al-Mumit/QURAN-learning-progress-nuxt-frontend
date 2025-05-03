@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6">
+  <div class="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-4 sm:p-6">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-6 sm:mb-8">
-        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-linear-to-r from-indigo-600 to-blue-600">
           Weekly Attendance Dashboard
         </h1>
         <p class="mt-2 text-sm sm:text-base text-gray-600">

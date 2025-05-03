@@ -18,7 +18,7 @@
                 required
                 type="email"
                 id="email"
-                class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded"
+                class="flex items-center gap-10 font-bold border border-gray-400 py-3 px-5 w-full base-trans mb-2 rounded-sm"
               />
             </div>
           </div>
@@ -27,7 +27,7 @@
           <button
             type="submit"
             :disabled="isDisable"
-            class="gap-3 font-bold border border-gray-400 py-3 sm:px-5 w-full bg-black hover:bg-gray-700 text-white base-trans rounded mt-3 flex justify-center items-center"
+            class="gap-3 font-bold border border-gray-400 py-3 sm:px-5 w-full bg-black hover:bg-gray-700 text-white base-trans rounded-sm mt-3 flex justify-center items-center"
           >
             <span>Reset Password</span>
             <span
@@ -43,7 +43,7 @@
           <button
             @click="navigateTo('../../../../sign-in/')"
             type="button"
-            class="gap-10 font-bold border border-gray-400 py-3 sm:px-5 w-full hover:bg-black hover:text-white base-trans rounded mt-3"
+            class="gap-10 font-bold border border-gray-400 py-3 sm:px-5 w-full hover:bg-black hover:text-white base-trans rounded-sm mt-3"
           >
             <span>Cancel</span>
           </button>
@@ -64,13 +64,13 @@
           <button
             @click="navigateTo('../../../../sign-in/')"
             type="button"
-            class="font-bold border border-gray-400 py-3 px-5 w-fit hover:bg-black hover:text-white base-trans rounded"
+            class="font-bold border border-gray-400 py-3 px-5 w-fit hover:bg-black hover:text-white base-trans rounded-sm"
           >
             <span>Sign In</span>
           </button>
           <button
             @click="openGmail"
-            class="font-bold border border-gray-400 py-3 px-5 w-fit hover:bg-black hover:text-white base-trans rounded"
+            class="font-bold border border-gray-400 py-3 px-5 w-fit hover:bg-black hover:text-white base-trans rounded-sm"
           >
             Open Gmail
           </button>

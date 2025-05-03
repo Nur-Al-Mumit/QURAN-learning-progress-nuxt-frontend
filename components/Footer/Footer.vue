@@ -69,8 +69,7 @@
     </section>
 
     <section class="border-t border-black text-center py-5 mt-5">
-      <h4>© এসো কুরআন শিখি, ২০২৪</h4>
-      <!-- <h4>Powered by RootSoft IT</h4> -->
+      <h4>© এসো কুরআন শিখি, ২০২৫</h4>
     </section>
   </footer>
 </template>
