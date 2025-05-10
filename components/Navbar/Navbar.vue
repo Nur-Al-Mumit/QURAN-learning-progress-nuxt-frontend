@@ -12,7 +12,7 @@
           class="font-bold text-xl 2xl:text-2xl flex items-center sm:h-[70px]"
         >
           <img
-            class="w-16 sm:w-18 rounded-full mr-3"
+            class="w-14 rounded-full mr-3"
             src="../../assets/imgs/logo.png"
             alt=""
           />
