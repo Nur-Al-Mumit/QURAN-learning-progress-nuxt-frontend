@@ -36,20 +36,20 @@
       </div>
 
       <div class="mt-10">
-        <form class="" @submit.prevent="getEmailOtp">
+        <form class="" @submit.prevent="getOtp">
           <div class="space-y-3">
             <InputsBaseInput
               :required="true"
               type="name"
               label="Name"
-              v-model="useStore.loginInfo.name"
+              v-model="studentAuthStore.signUp.name"
               input-class="font-bold border-gray-400 py-3 px-5 rounded-sm!"
             />
             <InputsBaseInput
               :required="true"
               type="email"
               label="Enter Email"
-              v-model="useStore.loginInfo.email"
+              v-model="studentAuthStore.signUp.email"
               input-class="font-bold border-gray-400 py-3 px-5 rounded-sm!"
             />
             <InputsBaseInput
@@ -57,7 +57,7 @@
               :is-password-show="true"
               type="password"
               label="Password"
-              v-model="useStore.loginInfo.password"
+              v-model="studentAuthStore.signUp.password"
               input-class="font-bold border-gray-400 py-3 px-5 rounded-sm!"
             />
             <InputsBaseInput
@@ -65,45 +65,11 @@
               :is-password-show="true"
               type="password"
               label="Confirm Password"
-              v-model="useStore.loginInfo.password_confirmation"
+              v-model="studentAuthStore.signUp.password_confirmation"
               input-class="font-bold border-gray-400 py-3 px-5 rounded-sm! "
             />
-
-            <!-- <div class="mt-8 mb-4">
-              <h1 class="text-2xl font-semibold text-gray-800 mb-4">
-                Create an account as
-              </h1>
-              <div class="flex space-x-6">
-                <button
-                  type="button"
-                  :class="[
-                    'w-40 px-6 py-3 rounded-lg text-lg font-bold transition-all duration-300 ease-in-out',
-                    selectedRoles.includes('candidate')
-                      ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/50'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:shadow-md',
-                  ]"
-                  @click="toggleRole('candidate')"
-                >
-                  Candidate
-                </button>
-
-                <button
-                  type="button"
-                  :class="[
-                    'w-40 px-6 py-3 rounded-lg text-lg font-bold transition-all duration-300 ease-in-out',
-                    selectedRoles.includes('recruiter')
-                      ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/50'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:shadow-md',
-                  ]"
-                  @click="toggleRole('recruiter')"
-                >
-                  Recruiter
-                </button>
-              </div>
-            </div> -->
           </div>
           <div>
-            <!-- <NuxtLink to="./recruitment-form"> -->
             <div class="mt-5">
               <p>
                 By continuing, you agree to our
@@ -146,34 +112,16 @@
 </template>
 
 <script setup>
-  import { useUserLogInStore } from "~/stores/userLogInStore";
+  import { useStudentAuthStore } from "~/stores/studentAuth";
   import getIcons from "~/composables/icon";
 
-  const useStore = useUserLogInStore();
+  const studentAuthStore = useStudentAuthStore();
   let isDisable = ref(false);
 
-  const selectedRoles = ref(["candidate"]);
-
-  const toggleRole = (role) => {
-    if (selectedRoles.value.includes(role)) {
-      selectedRoles.value = selectedRoles.value.filter((r) => r !== role);
-    } else {
-      selectedRoles.value.push(role);
-    }
-
-    useStore.loginInfo.roles =
-      selectedRoles.value.length === 2
-        ? 4
-        : selectedRoles.value.includes("candidate")
-        ? 3
-        : selectedRoles.value.includes("recruiter")
-        ? 2
-        : 3;
-
-    console.log("Payload:", useStore.loginInfo);
-  };
-
-  async function getEmailOtp() {
+  async function getOtp() {
+    studentAuthStore.signUpStage = 2;
+    console.log(studentAuthStore.signUpStage);
+    return;
     try {
       isDisable.value = true;
       const endpoint = "auth/send-otp-for-email";

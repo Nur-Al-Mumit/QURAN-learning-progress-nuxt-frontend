@@ -1,8 +1,11 @@
-import { useAuthStore } from "~/stores/userAuthStore";
+import { useStudentAuthInfoStore } from "~/stores/studentAuthInfo";
+import axios from "axios";
 
-export async function callAuthnAxios(api, payLoad, headers, method) {
+export async function callAuthnAxios(endpoint, payLoad, headers, method = 'post') {
 
-    const { loggedInData: { token_type, access_token } } = useAuthStore();
+    let data = null;
+    let error = {};
+    const { loggedInData: { token_type, access_token } } = useStudentAuthInfoStore();
 
     const config = headers === undefined ? ref({
         headers: {
@@ -10,7 +13,17 @@ export async function callAuthnAxios(api, payLoad, headers, method) {
         }
     }) : headers;
 
-    const { data, errorMessage } = await callAxios(api, payLoad, config.value, method)
-
-    return { data, errorMessage }
+    try {
+        const response = method.toLowerCase() === 'get'
+            ? await axios.get(endpoint, config)
+            : await axios.post(endpoint, payLoad, config);
+        data = response.data;
+    } catch (e) {
+        error = e.response?.data || e.message;
+        alert(error.message || "An error occurred");
+        // if (error.message === 'Unauthenticated') {
+        //   navigateTo('./')
+        // }
+    }
+    return { data, error };
 }

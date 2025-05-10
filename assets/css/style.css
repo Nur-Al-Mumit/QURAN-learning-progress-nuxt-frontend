@@ -4,7 +4,8 @@
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2100px;
 
-  --color-primary: #2d75c8;
+  --color-primary: #065f46;
+  --color-primary-hover: #022c22;
 
   --animate-fade-in-up: fade-in-up 0.7s ease forwards;
 
@@ -13,6 +14,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     100% {
       opacity: 1;
       transform: translateY(0);
@@ -29,12 +31,32 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
+  }
+
+  @font-face {
+    font-family: "kalpurush";
+    src: url("../fonts/kalpurush.eot");
+    src: url("../fonts/kalpurush.eot?#iefix") format("embedded-opentype"),
+      url("../fonts/kalpurush.woff") format("woff"),
+      url("../fonts/kalpurush.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf) format('truetype'),
+      url(../fonts/Roboto-Medium.ttf) format('truetype'),
+      url(../fonts/Roboto-Bold.ttf) format('truetype'), ;
+  }
+
+  body {
+    font-family: 'Roboto', 'kalpurush';
   }
 }
 
@@ -97,25 +119,4 @@
   @apply base-blank-btn w-fit text-center text-blue-600 hover:bg-blue-600 border-blue-600 items-center px-2;
 
   /* Dynamic input form's utility design */
-}
-
-@layer base {
-    @font-face {
-        font-family: "kalpurush";
-        src: url("../fonts/kalpurush.eot");
-        src: url("../fonts/kalpurush.eot?#iefix") format("embedded-opentype"),
-            url("../fonts/kalpurush.woff") format("woff"),
-            url("../fonts/kalpurush.ttf") format("truetype");
-    }
-
-    @font-face {
-        font-family: Roboto;
-        src: url(../fonts/Roboto-Regular.ttf) format('truetype'),
-            url(../fonts/Roboto-Medium.ttf) format('truetype'),
-            url(../fonts/Roboto-Bold.ttf) format('truetype'),;
-    }
-
-    body {
-        font-family: 'Roboto', 'kalpurush';
-    }
 }

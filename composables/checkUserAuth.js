@@ -1,7 +1,7 @@
-import { useAuthStore } from "~/stores/userAuthStore";
+import { useStudentAuthInfoStore } from "~/stores/studentAuthInfo";
 
 export const useCheckUserAuth = () => {
-  const authStore = useAuthStore();
+  const authStore = useStudentAuthInfoStore();
   const isAuthenticated = computed(() => authStore.isLoggedIn);
   const userRole = computed(() => authStore.userRole);
 

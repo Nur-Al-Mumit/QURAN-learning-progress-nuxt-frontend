@@ -45,7 +45,7 @@
     width: 100%;
     height: 5px;
     bottom: -80%;
-    background: #2d75c8;
+    background: #065f46;
     transition: transform 0.2s, width 0.2s;
   }
 
@@ -55,7 +55,7 @@
   }
 
   .router-link-active {
-    color: #2d75c8;
+    color: #065f46;
   }
 
   @media (max-width: 640px) {
@@ -65,7 +65,7 @@
     .router-link-active::after {
       bottom: -10%;
       left: 0;
-      background: #2d75c8;
+      background: #065f46;
     }
   }
 </style>

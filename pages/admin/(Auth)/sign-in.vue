@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-  import { useAuthStore } from "~/stores/userAuthStore";
+  import { useStudentAuthInfoStore } from "~/stores/studentAuthInfo";
   import { useUserLogInStore } from "~/stores/userLogInStore";
   import LogInStage1 from "~/components/LogIn/User/UserLogInStage1";
   import LogInStage2 from "~/components/LogIn/User/UserLogInStage2";
@@ -17,11 +17,11 @@
   import LogInStage4 from "~/components/LogIn/User/UserLogInWithEmailPassword";
 
   const useStore = useUserLogInStore();
-  const authStore = useAuthStore();
+  const authStore = useStudentAuthInfoStore();
 
   const logInStages = { LogInStage1, LogInStage2, LogInStage3, LogInStage4 };
 
   if (authStore.isLoggedIn) {
     navigateTo("./profile");
   }
-</script> 
+</script>

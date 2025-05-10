@@ -19,7 +19,7 @@
         :required="required"
         :placeholder="placeholders"
         :class="[
-          'w-full px-5 border rounded-lg outline-hidden focus:border-blue-500 base-tran',
+          'w-full px-5 border rounded-lg outline-hidden focus:border-primary base-tran',
           type === 'date' ? 'py-[11px]' : 'py-3',
           inputClass,
         ]"

@@ -32,7 +32,7 @@
 
 <script setup>
   import getIcons from "./SidebarIcon";
-  import { useAuthStore } from "~/stores/userAuthStore";
+  // import { useAuthStore } from "~/stores/userAuthStore";
   import { useSideBarStore } from "~/stores/sideBarStore";
 
   const sideBarStore = useSideBarStore();
@@ -48,7 +48,7 @@
     },
   });
 
-  const authStore = useAuthStore();
+  // const authStore = useAuthStore();
   const selectedMenu = ref("");
   const selectedSubMenu = ref(null);
 
@@ -64,7 +64,7 @@
       const { data, error } = await callAuthnAxios(endpoint);
 
       if (data?.data) {
-        authStore.isLoggedIn = false;
+        // authStore.isLoggedIn = false;
         document.cookie.split(";").forEach((cookie) => {
           const [name] = cookie.split("=");
           document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
