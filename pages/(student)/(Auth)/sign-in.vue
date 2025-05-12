@@ -1,11 +1,13 @@
 <template>
-  <section class="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+  <section
+    class="min-h-[95vh] flex items-center justify-center bg-gray-50 p-3 sm:py-8 mt-3"
+  >
     <div
-      class="w-full max-w-md bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
+      class="w-full max-w-md bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden pb-4"
     >
       <div class="h-2 bg-emerald-500"></div>
-      <div class="p-6 sm:p-8">
-        <div class="flex justify-center mb-6">
+      <div class="mt-2 sm:mt-0 px-4 sm:p-5">
+        <div class="flex justify-center mb-2">
           <div
             class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center"
           >
@@ -29,8 +31,10 @@
         <section>
           <div>
             <div class="text-center">
-              <h2 class="font-bold text-2xl mb-5">
-                Create a account or sign in to get started
+              <h2 class="font-bold text-[24px] leading-[28px] mb-4 sm:mb-6">
+                Create a account or
+                <br />
+                sign in to get started
               </h2>
               <p class="text-gray-600 text-sm">
                 Create an account or sign in. By continuing, you agree to our
@@ -55,7 +59,7 @@
 
             <div>
               <form class="" @submit.prevent="SignInWithEmailPass">
-                <div class="mt-10">
+                <div class="mt-5 sm:mt-10 space-y-2">
                   <InputsBaseInput
                     label="Enter Email"
                     type="email"
@@ -102,7 +106,7 @@
                 </div>
               </form>
 
-              <div class="mt-8 relative">
+              <div class="mt-2 sm:mt-4 relative">
                 <div class="absolute inset-0 flex items-center">
                   <div class="w-full border-t border-gray-200"></div>
                 </div>
@@ -111,7 +115,7 @@
                 </div>
               </div>
 
-              <div class="mt-6 text-center">
+              <div class="mt-2 sm:mt-4 text-center">
                 <p class="text-sm text-gray-600 mb-3">
                   Don't have an account yet?
                 </p>
@@ -126,7 +130,6 @@
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-5 w-5 ml-2 group-hover:translate-x-1 base-trans"
-
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >

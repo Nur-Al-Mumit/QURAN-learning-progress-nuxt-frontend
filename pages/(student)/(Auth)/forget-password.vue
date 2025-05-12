@@ -5,6 +5,21 @@
     >
       <div class="h-2 bg-emerald-500"></div>
       <div class="p-5 pb-0">
+        <div class="relative">
+          <button
+            @click="handleNavigation"
+            class="flex items-center gap-2 absolute -top-1 left-0 cursor-pointer hover:-translate-x-1 base-trans hover:text-primary"
+          >
+            <span
+              v-html="
+                getIcons(
+                  'right-arrow',
+                  `transition-transform duration-300 w-[40px]`
+                )
+              "
+            ></span>
+          </button>
+        </div>
         <div class="flex justify-center">
           <div
             class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center"
@@ -51,6 +66,7 @@
 </template>
 
 <script setup>
+  import getIcons from "~/composables/icon";
   import { useStudentAuthStore } from "~/stores/studentAuth";
   import ForgetPasswordStage1 from "~/components/Auth/ForgetPassword/Student/ForgetPasswordStage1.vue";
   import ForgetPasswordStage2 from "~/components/Auth/ForgetPassword/Student/ForgetPasswordStage2.vue";
@@ -60,4 +76,12 @@
     ForgetPasswordStage1,
     ForgetPasswordStage2,
   };
+
+  function handleNavigation() {
+    if (studentAuthStore.forgetPasswordStage > 1) {
+      studentAuthStore.forgetPasswordStage--;
+    } else {
+      navigateTo("/sign-in");
+    }
+  }
 </script>

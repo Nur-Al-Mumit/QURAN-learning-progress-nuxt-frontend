@@ -1,6 +1,6 @@
 <template>
   <section class="">
-    <label :for="label" class="block pl-1 mb-2 font-semibold text-left">
+    <label :for="label" class="block pl-1 mb-1 font-semibold text-left">
       {{ label }}
       <span class="text-red-600" v-if="required">*</span>
     </label>

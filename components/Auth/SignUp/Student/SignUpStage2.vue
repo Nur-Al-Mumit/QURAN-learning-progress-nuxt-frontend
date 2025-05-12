@@ -2,21 +2,6 @@
   <section>
     <div class="relative">
       <div>
-        <button
-          @click="() => (studentAuthStore.signUpStage = 1)"
-          class="flex items-center gap-2 absolute -top-20 left-0 cursor-pointer hover:-translate-x-1 base-trans hover:text-primary"
-        >
-          <span
-            v-html="
-              getIcons(
-                'right-arrow',
-                `w-[20px] transition-transform duration-300 rotate-180`
-              )
-            "
-          ></span>
-        </button>
-      </div>
-      <div>
         <form class="" @submit.prevent="matchOTP">
           <div>
             <p class="text-center mb-8">Enter Your OTP</p>

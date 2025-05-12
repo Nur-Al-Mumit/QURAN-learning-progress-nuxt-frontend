@@ -12,7 +12,7 @@
           class="font-bold text-xl 2xl:text-2xl flex items-center sm:h-[70px]"
         >
           <img
-            class="w-14 rounded-full mr-3"
+            class="w-12 sm:w-14 rounded-full mr-3"
             src="../../assets/imgs/logo.png"
             alt=""
           />
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-2 py-5 sm:py-0">
+      <div class="flex items-center gap-2 py-2 sm:py-0">
         <div>
           <NuxtLink
             v-if="!isUserOrAdminLoggedIn"
@@ -121,7 +121,7 @@
         <div @click="openSideMenu" class="sm:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
+            width="28"
             height="24"
             role="img"
           >

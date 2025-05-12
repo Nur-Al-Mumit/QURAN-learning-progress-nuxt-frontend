@@ -1,20 +1,5 @@
 <template>
   <section>
-    <header class="pt-5 relative">
-      <button
-        @click="() => (studentAuthStore.forgetPasswordStage = 1)"
-        class="flex items-center gap-2 absolute -top-10 left-5 cursor-pointer hover:-translate-x-1 base-trans hover:text-primary"
-      >
-        <span
-          v-html="
-            getIcons(
-              'right-arrow',
-              `w-[20px] transition-transform duration-300 rotate-180`
-            )
-          "
-        ></span>
-      </button>
-    </header>
     <p class="text-center mb-8">Enter Your OTP</p>
 
     <form @submit.prevent="matchOTP" class="mt-[48px] px-5">
@@ -52,7 +37,6 @@
 </template>
 
 <script setup>
-  import getIcons from "~/composables/icon";
   import { useStudentAuthStore } from "~/stores/studentAuth";
 
   // Stores

@@ -1,7 +1,7 @@
 <template>
   <section class="bg-gray-100 min-h-screen">
     <div class="base-width">
-      <div class="pb-16">
+      <div class="pb-10">
         <Navbar />
       </div>
       <div class="sm:flex gap-5 justify-center py-7">

@@ -44,15 +44,6 @@
                     </span>
                   </button>
                 </div>
-
-                <div class="text-center mt-6">
-                  <NuxtLink
-                    class="text-center text-[17px] base-trans text-primary hover:text-primary-hover font-semibold"
-                    to="/sign-in"
-                  >
-                    <span class="">Back to Sign In</span>
-                  </NuxtLink>
-                </div>
               </form>
 
               <section v-if="resetLinkSent" class="mt-6">
