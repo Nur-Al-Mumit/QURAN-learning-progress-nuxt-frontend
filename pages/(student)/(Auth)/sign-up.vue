@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-[95vh] flex items-center justify-center bg-gray-50 p-4">
+  <section class="min-h-[60vh] sm:min-h-[95vh] flex items-center justify-center bg-gray-50 p-4">
     <div
       class="w-full max-w-md bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
     >
@@ -43,7 +43,7 @@
         <component
           :is="SignUpStages['SignUpStage' + studentAuthStore.signUpStage]"
         />
-        <div class="mt-6 flex justify-center space-x-2">
+        <div class="mb-4 sm:mb-0 mt-4 flex justify-center space-x-2">
           <div
             v-for="n in 2"
             :key="n"

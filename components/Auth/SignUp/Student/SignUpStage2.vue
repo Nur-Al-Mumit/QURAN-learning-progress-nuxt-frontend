@@ -13,7 +13,7 @@
               :disabled="isDisable"
               class="gap-10 font-bold border border-primary py-3 px-5 w-full hover:bg-primary hover:text-white base-trans rounded-sm flex justify-center relative cursor-pointer"
             >
-              <span>LogIn</span>
+              <span>Sign Up</span>
               <span
                 v-if="isDisable"
                 class="absolute right-5"

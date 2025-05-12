@@ -2,16 +2,14 @@
   <section class="bg-white">
     <div class="relative">
       <div class="text-center">
-        <h2 class="font-bold text-[24px] leading-[28px] mb-4 sm:mb-6">
-          Create a account or
-          <br />
-          sign in to get started
+        <h2 class="font-bold text-[22px] leading-[24px] mb-4 sm:mb-6">
+          Create a account
         </h2>
       </div>
 
-      <div class="mt-10">
+      <div class="mt-6 sm:mt-10">
         <form class="" @submit.prevent="getOtp">
-          <div class="space-y-3">
+          <div class="space-y-[10px]">
             <InputsBaseInput
               :required="true"
               type="name"
@@ -44,8 +42,8 @@
             />
           </div>
           <div>
-            <div class="mt-5">
-              <p>
+            <div class="mt-3">
+              <p class="leading-[19px]">
                 By continuing, you agree to our
                 <a href="" target="_blank" class="text-black underline">
                   Terms of Use
@@ -61,7 +59,7 @@
             <button
               type="submit"
               :disabled="isDisable"
-              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded-sm mt-7 flex justify-center"
+              class="gap-10 font-bold border border-gray-400 py-3 px-5 w-full hover:bg-black hover:text-white base-trans rounded-sm mt-5 flex justify-center"
             >
               <div class="relative">
                 Continue

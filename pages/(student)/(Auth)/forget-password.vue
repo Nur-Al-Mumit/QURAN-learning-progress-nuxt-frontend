@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+  <section class="min-h-[70vh] sm:min-h-screen flex items-center justify-center bg-gray-50 p-4">
     <div
       class="w-full max-w-md bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
     >

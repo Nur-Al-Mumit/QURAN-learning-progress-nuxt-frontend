@@ -1,6 +1,6 @@
 <template>
   <section
-    class="min-h-[95vh] flex items-center justify-center bg-gray-50 p-3 sm:py-8 mt-3"
+    class="sm:min-h-[95vh] flex items-center justify-center bg-gray-50 p-3 sm:py-8 mt-3"
   >
     <div
       class="w-full max-w-md bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden pb-4"
