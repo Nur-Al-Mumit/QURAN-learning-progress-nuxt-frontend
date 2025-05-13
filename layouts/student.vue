@@ -1,14 +1,14 @@
 <template>
   <section class="bg-gray-100 min-h-screen">
     <div class="base-width">
-      <div class="pb-10">
+      <div class="pb-10 sm:pb-16">
         <Navbar />
       </div>
       <div class="sm:flex gap-5 justify-center py-7">
         <aside class="mb-5 sm:mb-0">
           <SideBar />
         </aside>
-        <div class="w-full scroll-bar-hidden shadow-sm h-fit">
+        <div class="w-full scroll-bar-hidden sm:shadow-sm h-fit">
           <slot />
         </div>
       </div>

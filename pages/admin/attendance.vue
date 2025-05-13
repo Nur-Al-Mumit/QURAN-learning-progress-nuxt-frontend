@@ -229,12 +229,10 @@
 </template>
 
 <script setup>
-definePageMeta({
-  layout: "admin",
-  middleware: 'admin-auth'
-});
-
-import { ref, onMounted } from 'vue';
+// definePageMeta({
+//   layout: "admin",
+//   middleware: 'admin-auth'
+// });
 import axios from 'axios';
 
 // State

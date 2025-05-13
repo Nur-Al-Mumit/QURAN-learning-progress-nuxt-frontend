@@ -84,40 +84,7 @@
       </div>
     </aside>
   </section>
-  <ModalsBaseModal
-    :is-modal="profilePictureModal"
-    @updatedValue="updateProfilePicModalValue"
-  >
-    <template #body>
-      <div class="flex items-center">
-        <h1
-          class="text-xl text-center font-bold underline text-primary underline-offset-4 mb-10"
-        >
-          ছবি আপলোড
-        </h1>
-      </div>
-      <div>
-        <InputsBaseFIleUpload
-          label=""
-          accept="image/jpeg"
-          inputId="profilePicture"
-          v-model="profilePicture"
-        />
-      </div>
-    </template>
-    <template #footer>
-      <div class="flex justify-center mt-6">
-        <button
-          @click="uploadProfilePicture"
-          class="base-blank-btn mr-4"
-          type="button"
-          :disabled="isUploadBtn"
-        >
-          Upload
-        </button>
-      </div>
-    </template>
-  </ModalsBaseModal>
+  <ProfilePictureUploadModal v-bind:is-modal-open="profilePictureModal" />
 </template>
 
 <script setup>
@@ -133,10 +100,6 @@
   let profilePicture = ref({});
   let profilePictureModal = ref(false);
   let isUploadBtn = ref(false);
-
-  function updateProfilePicModalValue(newValue) {
-    profilePictureModal.value = newValue;
-  }
 
   async function uploadProfilePicture() {
     try {
@@ -170,7 +133,5 @@
       deep: true,
     }
   );
-  onMounted(async () => {
-    await useUserInfo.getProfileInfo();
-  });
+  onMounted(async () => {});
 </script>

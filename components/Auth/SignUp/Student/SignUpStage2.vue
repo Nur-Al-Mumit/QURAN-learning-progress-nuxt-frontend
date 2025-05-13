@@ -4,7 +4,9 @@
       <div>
         <form class="" @submit.prevent="matchOTP">
           <div>
-            <p class="text-center mb-8">Enter Your OTP</p>
+            <p class="text-center font-bold text-[22px] leading-[24px] mb-8">
+              Enter Your OTP
+            </p>
             <InputsOTP v-model="otp" :isIncorrectOTP="isIncorrectOTP" />
           </div>
           <div class="text-center mt-8">
