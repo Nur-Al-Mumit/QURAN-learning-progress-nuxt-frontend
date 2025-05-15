@@ -84,7 +84,7 @@
       </div>
     </aside>
   </section>
-  <ProfilePictureUploadModal v-bind:is-modal-open="profilePictureModal" />
+  <ProfilePictureUploadModal v-model:is-modal-open="profilePictureModal" />
 </template>
 
 <script setup>

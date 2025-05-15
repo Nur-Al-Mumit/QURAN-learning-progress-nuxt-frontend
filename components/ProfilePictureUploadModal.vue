@@ -1,5 +1,5 @@
 <template>
-  <Modal v-model:is-open="isOpen">
+  <Modal v-model:is-open="isOpen" ref="modalRef">
     <template #header>
       <div class="p-5 pb-0">
         <h1 class="text-xl font-bold text-center text-gray-800">
@@ -124,6 +124,7 @@
 
   const emit = defineEmits(["update:isModalOpen", "upload"]);
 
+  const modalRef = ref(null);
   const isOpen = ref(props.isModalOpen);
   const selectedFile = ref(null);
   const previewImage = ref(null);
@@ -163,7 +164,7 @@
     isUploading.value = true;
     try {
       emit("upload", selectedFile.value);
-      closeModal();
+      modalRef.value.handleClose();
     } catch (error) {
       console.error("Upload failed:", error);
     } finally {
