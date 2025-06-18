@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <div
-      v-if="isOpen"
+      v-if="isModalOpen"
       class="fixed inset-0 z-[9999] flex items-center justify-center px-2 sm:px-0 pointer-events-auto"
     >
       <ModalBackdrop
@@ -30,29 +30,17 @@
   const emit = defineEmits(["update:isOpen"]);
 
   const isAnimating = ref(false);
+  const isModalOpen = ref(false);
 
-  // Handle isOpen changes
-  watch(
-    () => props.isOpen,
-    (newValue) => {
-      if (newValue) {
-        document.body.style.overflow = "hidden";
-        nextTick(() => {
-          isAnimating.value = true;
-        });
-      } else {
-        isAnimating.value = false;
-        setTimeout(() => {
-          document.body.style.overflow = "";
-        }, 300); // Wait for animation to complete
-      }
-    },
-    { immediate: true }
-  );
+  function openModal() {
+    isModalOpen.value = true;
+    emit("update:isOpen", true);
+  }
 
   const handleClose = () => {
     isAnimating.value = false;
     setTimeout(() => {
+      isModalOpen.value = false;
       emit("update:isOpen", false);
     }, 300);
   };
@@ -66,6 +54,27 @@
       handleClose();
     }
   };
+
+  // Handle isOpen changes
+  watch(
+    () => props.isOpen,
+    (newValue) => {
+      if (newValue) {
+        openModal();
+        // document.body.style.overflow = "hidden";
+        nextTick(() => {
+          isAnimating.value = true;
+        });
+      } else {
+        handleClose();
+        isAnimating.value = false;
+        setTimeout(() => {
+          document.body.style.overflow = "";
+        }, 300); // Wait for animation to complete
+      }
+    },
+    { immediate: true }
+  );
 
   defineExpose({
     handleClose,
