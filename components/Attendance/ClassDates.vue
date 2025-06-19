@@ -9,7 +9,7 @@
 
           <button
             @click="showAddDate = true"
-            class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+            class="border border-primary text-primary hover:text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors font-semibold cursor-pointer base-trans"
           >
             Add Class Date
           </button>
@@ -40,38 +40,56 @@
       </div>
     </div>
 
-    <div
-      v-if="showAddDate"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-    >
-      <div class="bg-white p-6 rounded-lg max-w-md w-full mx-4">
-        <h3 class="text-lg font-semibold mb-4">Add Class Date</h3>
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700 mb-2">
-            Date
-          </label>
-          <input
-            v-model="newClassDate"
-            type="date"
-            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+    <Modal v-model:is-open="showAddDate">
+      <template #header>
+        <h3 class="text-lg font-semibold text-center p-5 pb-0">
+          Add Class Date
+        </h3>
+      </template>
+      <template #body>
+        <div class="p-5">
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Date
+            </label>
+            <input
+              v-model="newClassDate"
+              type="date"
+              class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- Quick Add Options -->
+          <div class="border-t pt-4">
+            <h4 class="text-sm font-medium text-gray-700 mb-3">
+              Quick Add Options
+            </h4>
+            <button
+              @click="addCurrentMonthFridays"
+              class="w-full border border-blue-600 text-blue-600 hover:text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors font-semibold cursor-pointer base-trans"
+            >
+              Add Current Month's All Fridays
+            </button>
+          </div>
         </div>
-        <div class="flex gap-3">
+      </template>
+      <template #footer>
+        <div class="flex justify-center items-center gap-3 p-5 pt-0">
           <button
             @click="addDate"
-            class="flex-1 bg-green-600 text-white py-2 rounded-md hover:bg-green-700"
+            class="border border-green-600 text-green-600 hover:text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors font-semibold cursor-pointer base-trans"
           >
-            Add Date
+            Save
           </button>
           <button
             @click="showAddDate = false"
-            class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-md hover:bg-gray-400"
+            class="border border-gray-600 text-gray-600 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors font-semibold cursor-pointer base-trans"
           >
             Cancel
           </button>
         </div>
-      </div>
-    </div>
+      </template>
+    </Modal>
   </section>
 </template>
 
@@ -111,5 +129,46 @@
         delete studentAttendanceStore.attendance[studentId][date];
       });
     }
+  };
+
+  const addCurrentMonthFridays = () => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+    const fridays = [];
+
+    // Find all Fridays in the current month
+    for (
+      let date = new Date(firstDay);
+      date <= lastDay;
+      date.setDate(date.getDate() + 1)
+    ) {
+      if (date.getDay() === 5) {
+        const fridayDate = date.toISOString().split("T")[0];
+        fridays.push(fridayDate);
+      }
+    }
+
+    // Add fridays to the store if they don't already exist
+    let addedCount = 0;
+    fridays.forEach((friday) => {
+      if (!studentAttendanceStore.classDates.includes(friday)) {
+        studentAttendanceStore.classDates.push(friday);
+        addedCount++;
+      }
+    });
+
+    // Sort the dates
+    studentAttendanceStore.classDates.sort();
+
+    // if (addedCount > 0) {
+    //   alert(`Added ${addedCount} Friday(s) to class dates.`);
+    // } else {
+    //   alert("All Fridays for this month are already added.");
+    // }
+
+    showAddDate.value = false;
   };
 </script>
