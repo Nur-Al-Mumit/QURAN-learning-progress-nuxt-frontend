@@ -360,7 +360,7 @@
 
 <script setup>
   definePageMeta({
-    layout: "student",
+    layout: "split",
     // middleware: 'user-auth'
   });
 

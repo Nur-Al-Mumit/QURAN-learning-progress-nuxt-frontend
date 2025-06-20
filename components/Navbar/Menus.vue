@@ -24,6 +24,7 @@
   const menus = [
     { id: 3, title: "Dashboard", url: "/dashboard" },
     { id: 2, title: "Attendance", url: "/attendance" },
+    { id: 2, title: "Competition", url: "/quran-competition" },
   ];
 </script>
 

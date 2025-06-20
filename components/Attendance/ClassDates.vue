@@ -15,27 +15,75 @@
           </button>
         </div>
         <div class="p-4">
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div class="mb-4">
+            <input
+              v-model="searchDate"
+              type="text"
+              placeholder="Search dates (e.g., 2024-01, Jan 2024, or specific date)"
+              class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <!-- Dates Grid -->
+          <div class="min-h-[200px]">
             <div
-              v-for="date in filteredDates"
-              :key="date"
-              class="flex items-center justify-between p-2 bg-gray-50 rounded"
+              v-if="paginatedDates.length === 0"
+              class="text-center py-8 text-gray-500"
             >
-              <span class="text-sm">{{ formatDate(date) }}</span>
-              <button
-                @click="removeDate(date)"
-                class="text-red-600 hover:text-red-800 p-1"
+              <p>
+                {{
+                  searchDate
+                    ? "No dates found matching your search"
+                    : "No class dates added yet"
+                }}
+              </p>
+            </div>
+
+            <div
+              v-else
+              class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2"
+            >
+              <div
+                v-for="date in paginatedDates"
+                :key="date"
+                class="relative p-2 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100 hover:shadow-md transition-all duration-200 group cursor-pointer"
               >
-                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fill-rule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </button>
+                <button
+                  @click="removeDate(date)"
+                  class="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 bg-white rounded-full p-1 shadow-sm hover:shadow-md transition-all duration-200 z-10"
+                  title="Remove date"
+                >
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="text-center">
+                  <div class="text-xs font-medium text-blue-600 uppercase">
+                    {{ formatDay(date) }}
+                  </div>
+                  <div class="text-sm font-bold text-gray-800">
+                    {{ formatDateNumber(date) }}
+                  </div>
+                  <div class="text-xs text-gray-600">
+                    {{ formatMonth(date) }}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
+          <Pagination
+            v-model:current-page="currentPage"
+            :total-items="studentAttendanceStore.classDates.length"
+            :filtered-items="filteredAndSortedDates.length"
+            :items-per-page="itemsPerPage"
+            item-type="dates"
+            @page-change="onPageChange"
+          />
         </div>
       </div>
     </div>
@@ -55,6 +103,7 @@
             <input
               v-model="newClassDate"
               type="date"
+              :min="minDate"
               class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -107,6 +156,93 @@
   // State
   const showAddDate = ref(false);
   const newClassDate = ref("");
+  const searchDate = ref("");
+  const currentPage = ref(1);
+  const itemsPerPage = ref(30);
+
+  // Set default date to today when modal opens
+  watch(showAddDate, (isOpen) => {
+    if (isOpen && !newClassDate.value) {
+      const today = new Date();
+      newClassDate.value = today.toISOString().split("T")[0];
+    }
+  });
+
+  // Computed properties
+  const minDate = computed(() => {
+    const today = new Date();
+    today.setMonth(today.getMonth() - 12);
+    return today.toISOString().split("T")[0];
+  });
+
+  const filteredAndSortedDates = computed(() => {
+    let dates = [...props.filteredDates];
+
+    // Filter by search term
+    if (searchDate.value) {
+      const searchTerm = searchDate.value.toLowerCase();
+      dates = dates.filter((date) => {
+        const dateObj = new Date(date);
+        const formatted = formatDate(date).toLowerCase();
+        const monthYear = `${dateObj.toLocaleString("default", {
+          month: "long",
+        })} ${dateObj.getFullYear()}`.toLowerCase();
+        const shortMonthYear = `${dateObj.toLocaleString("default", {
+          month: "short",
+        })} ${dateObj.getFullYear()}`.toLowerCase();
+
+        return (
+          date.includes(searchTerm) ||
+          formatted.includes(searchTerm) ||
+          monthYear.includes(searchTerm) ||
+          shortMonthYear.includes(searchTerm)
+        );
+      });
+    }
+
+    // Sort dates in ascending order
+    dates.sort((a, b) => {
+      const dateA = new Date(a);
+      const dateB = new Date(b);
+      return dateA - dateB;
+    });
+
+    return dates;
+  });
+
+  const paginatedDates = computed(() => {
+    const start = (currentPage.value - 1) * itemsPerPage.value;
+    const end = start + itemsPerPage.value;
+    return filteredAndSortedDates.value.slice(start, end);
+  });
+
+  // Watch for search changes to reset current page
+  watch([searchDate], () => {
+    currentPage.value = 1;
+  });
+
+  const formatDay = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", { weekday: "short" });
+  };
+
+  const formatDateNumber = (dateString) => {
+    const date = new Date(dateString);
+    return date.getDate();
+  };
+
+  const formatMonth = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      year: "2-digit",
+    });
+  };
+
+  const onPageChange = (page) => {
+    // Optional: Add any additional logic when page changes
+    console.log(`Changed to page ${page}`);
+  };
 
   const addDate = () => {
     if (
@@ -139,7 +275,6 @@
     const lastDay = new Date(currentYear, currentMonth + 1, 0);
     const fridays = [];
 
-    // Find all Fridays in the current month
     for (
       let date = new Date(firstDay);
       date <= lastDay;
@@ -151,7 +286,6 @@
       }
     }
 
-    // Add fridays to the store if they don't already exist
     let addedCount = 0;
     fridays.forEach((friday) => {
       if (!studentAttendanceStore.classDates.includes(friday)) {
@@ -160,15 +294,7 @@
       }
     });
 
-    // Sort the dates
     studentAttendanceStore.classDates.sort();
-
-    // if (addedCount > 0) {
-    //   alert(`Added ${addedCount} Friday(s) to class dates.`);
-    // } else {
-    //   alert("All Fridays for this month are already added.");
-    // }
-
     showAddDate.value = false;
   };
 </script>

@@ -59,10 +59,7 @@
               </option>
             </select>
           </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              Student View
-            </label>
+          <div class="w-full">
             <select
               v-model="studentView"
               class="border border-gray-300 rounded-md px-3 py-2"
@@ -76,6 +73,11 @@
                 {{ student.name }}
               </option>
             </select>
+            <!-- <InputsBaseFilterSelectCuntry
+              :options="studentAttendanceStore.students"
+              v-model="studentView"
+              :required="false"
+            /> -->
           </div>
         </div>
 
@@ -83,12 +85,6 @@
         <AttendanceExport />
       </div>
     </div>
-
-    <!-- Students List -->
-    <AttendanceStudentsList :students="studentAttendanceStore.students" />
-
-    <!-- Class Dates -->
-    <AttendanceClassDates :filteredDates="filteredDates" />
 
     <!-- Attendance Table -->
     <AttendanceTable
@@ -99,6 +95,10 @@
 </template>
 
 <script setup>
+  definePageMeta({ layout: "split" });
+
+  // Stores
+  const menuStore = useMenuStore();
   const studentAttendanceStore = useStudentAttendanceStore();
 
   // View options
@@ -228,5 +228,48 @@
     if (availableMonths.value.length > 0) {
       selectedMonth.value = availableMonths.value[0].value;
     }
+
+    menuStore.links = [
+      {
+        title: "Dashboard",
+        icon: "Dashboard",
+        // link: "/admin/dashboard",
+      },
+      {
+        title: "View Profile",
+        icon: "ViewProfile",
+        // link: "/admin/profile-details",
+      },
+      {
+        title: "Update Profile",
+        icon: "UpdateProfile",
+        // link: "/admin/profile",
+      },
+      {
+        title: "Add Student",
+        icon: "UpdateProfile",
+        link: "/admin/add-student",
+      },
+      {
+        title: "Attendance",
+        icon: "Circular",
+        link: "/admin/attendance",
+      },
+      {
+        title: "Add Class Date",
+        icon: "Circular",
+        link: "/admin/add-class-date",
+      },
+      {
+        title: "Settings",
+        icon: "Settings",
+        // link: "/settings",
+      },
+      {
+        title: "Log Out",
+        icon: "LogOut",
+        link: "",
+      },
+    ];
   });
 </script>

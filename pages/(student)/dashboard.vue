@@ -30,7 +30,7 @@
 
 <script setup>
   definePageMeta({
-    layout: "student",
+    layout: "split",
   });
   const arabicLetters = ref([
     { char: "ا", accuracy: 50 },
