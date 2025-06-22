@@ -100,8 +100,8 @@ export const useStudentAttendanceStore = defineStore(
         "2025-07-03": "present",
         "2025-06-20": "present",
         "2025-05-02": "present",
-        "2025-05-09": "present",
-        "2025-05-16": "present",
+        "2025-05-09": "recording",
+        "2025-05-16": "recording",
         "2025-05-23": "present",
         "2025-05-30": "present",
         "2025-06-13": "present",
@@ -128,7 +128,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-05-16": "present",
         "2025-05-23": "present",
         "2025-05-30": "present",
-        "2025-06-13": "present",
+        "2025-06-13": "recording",
       },
       S005: {
         "2025-06-01": "present",
@@ -173,7 +173,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-20": "present",
         "2025-05-09": "present",
         "2025-05-16": "present",
-        "2025-05-23": "present",
+        "2025-05-23": "recording",
         "2025-05-30": "present",
       },
       S007: {
@@ -236,7 +236,7 @@ export const useStudentAttendanceStore = defineStore(
       S010: {
         "2025-05-02": "present",
         "2025-05-09": "present",
-        "2025-05-16": "present",
+        "2025-05-16": "recording",
         "2025-05-23": "present",
         "2025-05-30": "present",
         "2025-06-13": "present",
@@ -259,13 +259,13 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
       },
       S014: {
-        "2025-06-20": "present",
-        "2025-05-02": "present",
-        "2025-05-09": "present",
+        "2025-06-20": "recording",
+        "2025-05-02": "recording",
+        "2025-05-09": "recording",
         "2025-05-16": "present",
-        "2025-05-23": "present",
-        "2025-05-30": "present",
-        "2025-06-13": "present",
+        "2025-05-23": "recording",
+        "2025-05-30": "recording",
+        "2025-06-13": "recording",
       },
       S015: {
         "2025-06-20": "present",
@@ -302,6 +302,8 @@ export const useStudentAttendanceStore = defineStore(
       S019: {
         "2025-06-20": "present",
         "2025-05-02": "absent",
+        "2025-05-30": "present",
+        "2025-06-13": "present",
       },
     });
     return { students, classDates, attendance };

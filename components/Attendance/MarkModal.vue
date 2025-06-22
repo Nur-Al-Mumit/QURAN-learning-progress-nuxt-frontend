@@ -63,6 +63,26 @@
                     markAttendance(
                       student.id,
                       selectedDateForAttendance,
+                      'recording'
+                    )
+                  "
+                  :class="
+                    getAttendanceStatus(
+                      student.id,
+                      selectedDateForAttendance
+                    ) === 'recording'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-200 text-gray-700'
+                  "
+                  class="px-3 py-1 rounded text-sm"
+                >
+                  Recording
+                </button>
+                <button
+                  @click="
+                    markAttendance(
+                      student.id,
+                      selectedDateForAttendance,
                       'absent'
                     )
                   "

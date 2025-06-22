@@ -55,6 +55,11 @@
                 <th
                   class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
+                  Rec
+                </th>
+                <th
+                  class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
                   %
                 </th>
               </tr>
@@ -80,12 +85,16 @@
                     :class="
                       getAttendanceStatus(student.id, date) === 'present'
                         ? 'text-green-600'
+                        : getAttendanceStatus(student.id, date) === 'recording'
+                        ? 'text-blue-600'
                         : 'text-red-600'
                     "
                   >
                     {{
                       getAttendanceStatus(student.id, date) === "present"
                         ? "✓"
+                        : getAttendanceStatus(student.id, date) === "recording"
+                        ? "◯"
                         : "✗"
                     }}
                   </span>
@@ -99,6 +108,11 @@
                   class="px-4 py-3 text-center text-sm font-medium text-red-600"
                 >
                   {{ getStudentStats(student.id).absent }}
+                </td>
+                <td
+                  class="px-4 py-3 text-center text-sm font-medium text-blue-600"
+                >
+                  {{ getStudentStats(student.id).recording }}
                 </td>
                 <td class="px-4 py-3 text-center text-sm font-medium">
                   {{ getStudentStats(student.id).percentage }}%
@@ -148,19 +162,22 @@
 
     let present = 0;
     let absent = 0;
+    let recording = 0;
 
     relevantDates.forEach((date) => {
       if (studentAttendance[date] === "present") {
         present++;
+      } else if (studentAttendance[date] === "recording") {
+        recording++;
       } else {
         absent++;
       }
     });
 
-    const total = present + absent;
+    const total = present + absent + recording;
     const percentage = total > 0 ? Math.round((present / total) * 100) : 0;
 
-    return { present, absent, percentage };
+    return { present, absent, recording, percentage };
   };
 
   const formatDateShort = (dateString) => {
