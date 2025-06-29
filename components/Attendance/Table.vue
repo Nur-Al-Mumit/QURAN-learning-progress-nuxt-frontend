@@ -64,9 +64,9 @@
                 </th>
               </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
+            <tbody class="bg-white divide-y divide-gray-200 overflow-hidden">
               <tr v-for="student in filteredStudents" :key="student.id">
-                <td class="px-4 py-3 whitespace-nowrap">
+                <td class="px-4 print:px-2 py-3 print:py-1.5 whitespace-nowrap">
                   <div>
                     <div class="text-sm font-medium text-gray-900">
                       {{ student.name }}
@@ -79,7 +79,7 @@
                 <td
                   v-for="date in filteredDates"
                   :key="date"
-                  class="px-2 py-3 text-center"
+                  class="px-2 print:px-1 py-3 print:py-1.5 text-center"
                 >
                   <span
                     :class="
@@ -100,21 +100,21 @@
                   </span>
                 </td>
                 <td
-                  class="px-4 py-3 text-center text-sm font-medium text-green-600"
+                  class="px-4 py-3 print:py-1.5 text-center text-sm font-medium text-green-600"
                 >
                   {{ getStudentStats(student.id).present }}
                 </td>
                 <td
-                  class="px-4 py-3 text-center text-sm font-medium text-red-600"
+                  class="px-4 py-3 print:py-1.5 text-center text-sm font-medium text-red-600"
                 >
                   {{ getStudentStats(student.id).absent }}
                 </td>
                 <td
-                  class="px-4 py-3 text-center text-sm font-medium text-blue-600"
+                  class="px-4 py-3 print:py-1.5 text-center text-sm font-medium text-blue-600"
                 >
                   {{ getStudentStats(student.id).recording }}
                 </td>
-                <td class="px-4 py-3 text-center text-sm font-medium">
+                <td class="px-4 py-3 print:py-1.5 text-center text-sm font-medium">
                   {{ getStudentStats(student.id).percentage }}%
                 </td>
               </tr>
