@@ -121,6 +121,23 @@
             </tbody>
           </table>
         </div>
+        <!-- Legend for print -->
+        <div class="p-4 border-t print:block hidden">
+          <div class="text-xs text-gray-600 flex items-center gap-4 justify-center">
+            <span class="flex items-center gap-1">
+              <span class="text-green-600">✓</span>
+              <span>Present</span>
+            </span>
+            <span class="flex items-center gap-1">
+              <span class="text-blue-600">◯</span>
+              <span>Recording</span>
+            </span>
+            <span class="flex items-center gap-1">
+              <span class="text-red-600">✗</span>
+              <span>Absent</span>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
 
