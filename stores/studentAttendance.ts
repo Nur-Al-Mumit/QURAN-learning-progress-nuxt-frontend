@@ -82,6 +82,7 @@ export const useStudentAttendanceStore = defineStore(
       "2025-06-20",
       "2025-06-27",
       "2025-11-07",
+      "2025-11-14",
     ]);
 
     const attendance = reactive({
@@ -132,6 +133,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-05-16": "present",
         "2025-05-23": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S003: {
         "2025-06-01": "absent",
@@ -158,6 +160,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S004: {
         "2025-06-01": "present",
@@ -210,6 +213,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S006: {
         "2025-06-01": "absent",
@@ -233,6 +237,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-05-23": "recording",
         "2025-05-30": "present",
         "2025-06-27": "present",
+        "2025-11-14": "present",
       },
       S007: {
         "2025-06-01": "present",
@@ -259,6 +264,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S008: {
         "2025-06-01": "present",
@@ -284,6 +290,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-05-30": "present",
         "2025-06-13": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S009: {
         "2025-06-20": "present",
@@ -295,6 +302,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S010: {
         "2025-05-02": "present",
@@ -305,6 +313,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "present",
         "2025-11-07": "recording",
+        "2025-11-14": "present",
       },
       S011: {
         "2025-05-09": "absent",
@@ -324,6 +333,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-05-23": "present",
         "2025-06-13": "present",
         "2025-11-07": "recording",
+        "2025-11-14": "present",
       },
       S014: {
         "2025-06-20": "recording",
@@ -344,6 +354,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S016: {
         "2025-06-20": "present",
@@ -354,6 +365,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S017: {
         "2025-06-20": "present",
@@ -364,6 +376,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "present",
         "2025-11-07": "present",
+        "2025-11-14": "present",
       },
       S018: {
         "2025-06-20": "present",
@@ -382,6 +395,7 @@ export const useStudentAttendanceStore = defineStore(
         "2025-06-13": "present",
         "2025-06-27": "recording",
         "2025-11-07": "recording",
+        "2025-11-14": "present",
       },
       S020: {
         "2025-11-07": "present",
