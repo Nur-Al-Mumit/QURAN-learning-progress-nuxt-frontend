@@ -115,7 +115,37 @@
                   {{ getStudentStats(student.id).recording }}
                 </td>
                 <td class="px-4 py-3 print:py-1.5 text-center text-sm font-medium">
-                  {{ getStudentStats(student.id).percentage }}%
+                  <span class="text-gray-900 font-semibold">
+                    {{ getStudentStats(student.id).percentage }}%
+                  </span>
+                  <br>
+                  <template
+                    v-if="
+                      getStudentStats(student.id).presentPercentage ||
+                      getStudentStats(student.id).recordingPercentage
+                    "
+                  >
+                    <span class="text-gray-500"> (</span>
+                    <template v-if="getStudentStats(student.id).presentPercentage">
+                      <span class="text-green-600">
+                        {{ getStudentStats(student.id).presentPercentage }}
+                      </span>
+                    </template>
+                    <template
+                      v-if="
+                        getStudentStats(student.id).presentPercentage &&
+                        getStudentStats(student.id).recordingPercentage
+                      "
+                    >
+                      <span class="text-gray-500"> + </span>
+                    </template>
+                    <template v-if="getStudentStats(student.id).recordingPercentage">
+                      <span class="text-blue-600">
+                        {{ getStudentStats(student.id).recordingPercentage }}
+                      </span>
+                    </template>
+                    <span class="text-gray-500">)</span>
+                  </template>
                 </td>
               </tr>
             </tbody>
@@ -172,6 +202,36 @@
     );
   });
 
+  const distributePercentages = (counts) => {
+    const total = counts.reduce((sum, count) => sum + count, 0);
+
+    if (total === 0) {
+      return counts.map(() => 0);
+    }
+
+    const rawPercentages = counts.map((count) => (count / total) * 100);
+    const basePercentages = rawPercentages.map((value) => Math.floor(value));
+    let remainder =
+      100 - basePercentages.reduce((sum, value) => sum + value, 0);
+
+    const fractionalRanks = rawPercentages
+      .map((value, index) => ({
+        index,
+        fraction: value - Math.floor(value),
+      }))
+      .sort((a, b) => b.fraction - a.fraction);
+
+    let rankIndex = 0;
+    while (remainder > 0) {
+      const targetIndex = fractionalRanks[rankIndex].index;
+      basePercentages[targetIndex] += 1;
+      remainder -= 1;
+      rankIndex = (rankIndex + 1) % fractionalRanks.length;
+    }
+
+    return basePercentages;
+  };
+
   const getStudentStats = (studentId) => {
     const studentAttendance =
       studentAttendanceStore.attendance[studentId] || {};
@@ -191,10 +251,20 @@
       }
     });
 
-    const total = present + absent + recording;
-    const percentage = total > 0 ? Math.round((present / total) * 100) : 0;
+    const [presentPercentage, recordingPercentage, absentPercentage] =
+      distributePercentages([present, recording, absent]);
+    const presentWithRecording = present + recording;
+    const combinedPercentage = presentPercentage + recordingPercentage;
 
-    return { present, absent, recording, percentage };
+    return {
+      present: presentWithRecording,
+      absent,
+      recording,
+      percentage: combinedPercentage,
+      presentPercentage,
+      recordingPercentage,
+      absentPercentage,
+    };
   };
 
   const formatDateShort = (dateString) => {
