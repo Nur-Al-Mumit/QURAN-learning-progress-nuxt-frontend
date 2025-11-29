@@ -27,73 +27,87 @@
         >
           Export All Data JSON
         </button>
+        <button
+          @click="syncStoreData"
+          class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors"
+        >
+          Sync Data to Store
+        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+  import { $fetch } from "ofetch";
+
   const studentAttendanceStore = useStudentAttendanceStore();
 
-  // Export functionality
-  const exportData = (type) => {
-    let data = {};
-    let filename = "";
+  const clone = (value) => JSON.parse(JSON.stringify(value));
+  const getSortedClassDates = () =>
+    [...studentAttendanceStore.classDates].sort();
+
+  const buildAttendanceSummary = () => {
+    const summary = {};
+    Object.keys(studentAttendanceStore.attendance).forEach((studentId) => {
+      const studentData = studentAttendanceStore.attendance[studentId];
+      let present = 0;
+      let absent = 0;
+
+      Object.values(studentData).forEach((status) => {
+        if (status === "present") present++;
+        else absent++;
+      });
+
+      summary[studentId] = {
+        present,
+        absent,
+        total: present + absent,
+        percentage:
+          present + absent > 0
+            ? Math.round((present / (present + absent)) * 100)
+            : 0,
+      };
+    });
+    return summary;
+  };
+
+  const buildExportBundle = (type) => {
+    const timestamp = new Date().toISOString();
+    const bundle = {
+      data: {},
+      filename: "",
+    };
 
     switch (type) {
       case "students":
-        data = {
-          students: studentAttendanceStore.students,
-          exportDate: new Date().toISOString(),
+        bundle.data = {
+          students: clone(studentAttendanceStore.students),
+          exportDate: timestamp,
           totalStudents: studentAttendanceStore.students.length,
         };
-        filename = "students_data.json";
+        bundle.filename = "students_data.json";
         break;
-
-      case "classDates":
-        data = {
-          classDates: studentAttendanceStore.classDates.sort(),
-          exportDate: new Date().toISOString(),
-          totalDates: studentAttendanceStore.classDates.length,
+      case "classDates": {
+        const dates = getSortedClassDates();
+        bundle.data = {
+          classDates: dates,
+          exportDate: timestamp,
+          totalDates: dates.length,
           dateRange: {
-            earliest: studentAttendanceStore.classDates.sort()[0],
-            latest:
-              studentAttendanceStore.classDates.sort()[
-                studentAttendanceStore.classDates.length - 1
-              ],
+            earliest: dates[0],
+            latest: dates[dates.length - 1],
           },
         };
-        filename = "class_dates_data.json";
+        bundle.filename = "class_dates_data.json";
         break;
-
-      case "attendance":
-        // Calculate summary statistics
-        const summary = {};
-        Object.keys(studentAttendanceStore.attendance).forEach((studentId) => {
-          const studentData = studentAttendanceStore.attendance[studentId];
-          let present = 0;
-          let absent = 0;
-
-          Object.values(studentData).forEach((status) => {
-            if (status === "present") present++;
-            else absent++;
-          });
-
-          summary[studentId] = {
-            present,
-            absent,
-            total: present + absent,
-            percentage:
-              present + absent > 0
-                ? Math.round((present / (present + absent)) * 100)
-                : 0,
-          };
-        });
-
-        data = {
-          attendance: studentAttendanceStore.attendance,
+      }
+      case "attendance": {
+        const summary = buildAttendanceSummary();
+        bundle.data = {
+          attendance: clone(studentAttendanceStore.attendance),
           summary,
-          exportDate: new Date().toISOString(),
+          exportDate: timestamp,
           totalRecords: Object.keys(studentAttendanceStore.attendance).reduce(
             (acc, studentId) =>
               acc +
@@ -101,18 +115,19 @@
             0
           ),
         };
-        filename = "attendance_data.json";
+        bundle.filename = "attendance_data.json";
         break;
-
-      case "all":
-        data = {
-          students: studentAttendanceStore.students,
-          classDates: studentAttendanceStore.classDates.sort(),
-          attendance: studentAttendanceStore.attendance,
-          exportDate: new Date().toISOString(),
+      }
+      case "all": {
+        const dates = getSortedClassDates();
+        bundle.data = {
+          students: clone(studentAttendanceStore.students),
+          classDates: dates,
+          attendance: clone(studentAttendanceStore.attendance),
+          exportDate: timestamp,
           metadata: {
             totalStudents: studentAttendanceStore.students.length,
-            totalDates: studentAttendanceStore.classDates.length,
+            totalDates: dates.length,
             totalAttendanceRecords: Object.keys(
               studentAttendanceStore.attendance
             ).reduce(
@@ -123,19 +138,22 @@
               0
             ),
             dateRange: {
-              earliest: studentAttendanceStore.classDates.sort()[0],
-              latest:
-                studentAttendanceStore.classDates.sort()[
-                  studentAttendanceStore.classDates.length - 1
-                ],
+              earliest: dates[0],
+              latest: dates[dates.length - 1],
             },
           },
         };
-        filename = "complete_attendance_system_data.json";
+        bundle.filename = "complete_attendance_system_data.json";
         break;
+      }
+      default:
+        throw new Error(`Unsupported export type: ${type}`);
     }
 
-    // Create and download the file
+    return bundle;
+  };
+
+  const downloadJson = (data, filename) => {
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
     });
@@ -147,12 +165,33 @@
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+  };
 
-    // Show success message
+  const exportData = (type) => {
+    const { data, filename } = buildExportBundle(type);
+    downloadJson(data, filename);
     alert(
       `${
         type.charAt(0).toUpperCase() + type.slice(1)
       } data exported successfully!`
     );
+  };
+
+  const syncStoreData = async () => {
+    const { data } = buildExportBundle("all");
+    try {
+      await $fetch("/api/attendance-data", {
+        method: "PUT",
+        body: {
+          students: data.students,
+          classDates: data.classDates,
+          attendance: data.attendance,
+        },
+      });
+      alert("Store data updated successfully!");
+    } catch (error) {
+      console.error("Failed to sync store data:", error);
+      alert("Failed to sync data. Check console for details.");
+    }
   };
 </script>

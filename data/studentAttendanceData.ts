@@ -1,0 +1,434 @@
+const studentAttendanceData = {
+  "students": [
+    {
+      "id": "S001",
+      "name": "Fahad Chowdhury"
+    },
+    {
+      "id": "S002",
+      "name": "Abdur Rouf"
+    },
+    {
+      "id": "S003",
+      "name": "Mubin Mohammed"
+    },
+    {
+      "id": "S004",
+      "name": "Ashraful Islam"
+    },
+    {
+      "id": "S005",
+      "name": "Nur Al Mumit"
+    },
+    {
+      "id": "S006",
+      "name": "Mamnun"
+    },
+    {
+      "id": "S007",
+      "name": "Fahid"
+    },
+    {
+      "id": "S008",
+      "name": "Fujail Ahmed"
+    },
+    {
+      "id": "S009",
+      "name": "Moh.Foyez uddin Ahmed"
+    },
+    {
+      "id": "S010",
+      "name": "Abdul Awul Arman"
+    },
+    {
+      "id": "S012",
+      "name": "Mostafizur"
+    },
+    {
+      "id": "S013",
+      "name": "Shad Ahmed"
+    },
+    {
+      "id": "S015",
+      "name": "Shams"
+    },
+    {
+      "id": "S016",
+      "name": "Abul Kalam"
+    },
+    {
+      "id": "S017",
+      "name": "Allahrakha Mustak"
+    },
+    {
+      "id": "S018",
+      "name": "Zakir"
+    },
+    {
+      "id": "S019",
+      "name": "Anwar Ibn Arob"
+    },
+    {
+      "id": "S020",
+      "name": "Md Sadat Hussein Khan"
+    },
+    {
+      "id": "S021",
+      "name": "Mujibur Rahman"
+    }
+  ],
+  "classDates": [
+    "2025-05-02",
+    "2025-05-09",
+    "2025-05-16",
+    "2025-05-23",
+    "2025-05-30",
+    "2025-06-13",
+    "2025-06-20",
+    "2025-06-27",
+    "2025-11-07",
+    "2025-11-14",
+    "2025-11-28"
+  ],
+  "attendance": {
+    "S001": {
+      "2025-06-01": "present",
+      "2025-06-03": "present",
+      "2025-06-05": "absent",
+      "2025-06-08": "present",
+      "2025-06-10": "present",
+      "2025-06-12": "present",
+      "2025-06-15": "present",
+      "2025-06-17": "absent",
+      "2025-06-19": "present",
+      "2025-06-22": "present",
+      "2025-06-24": "present",
+      "2025-06-26": "present",
+      "2025-06-29": "present",
+      "2025-07-01": "absent",
+      "2025-07-03": "present",
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "recording",
+      "2025-11-28": "absent"
+    },
+    "S002": {
+      "2025-06-01": "present",
+      "2025-06-03": "absent",
+      "2025-06-05": "present",
+      "2025-06-08": "present",
+      "2025-06-10": "absent",
+      "2025-06-12": "present",
+      "2025-06-15": "present",
+      "2025-06-17": "present",
+      "2025-06-19": "present",
+      "2025-06-22": "absent",
+      "2025-06-24": "present",
+      "2025-06-26": "present",
+      "2025-06-29": "present",
+      "2025-07-01": "present",
+      "2025-07-03": "absent",
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "present"
+    },
+    "S003": {
+      "2025-06-01": "absent",
+      "2025-06-03": "present",
+      "2025-06-05": "present",
+      "2025-06-08": "present",
+      "2025-06-10": "present",
+      "2025-06-12": "absent",
+      "2025-06-15": "present",
+      "2025-06-17": "present",
+      "2025-06-19": "absent",
+      "2025-06-22": "present",
+      "2025-06-24": "present",
+      "2025-06-26": "present",
+      "2025-06-29": "absent",
+      "2025-07-01": "present",
+      "2025-07-03": "present",
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "recording",
+      "2025-05-16": "recording",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "recording"
+    },
+    "S004": {
+      "2025-06-01": "present",
+      "2025-06-03": "present",
+      "2025-06-05": "present",
+      "2025-06-08": "absent",
+      "2025-06-10": "present",
+      "2025-06-12": "present",
+      "2025-06-15": "absent",
+      "2025-06-17": "present",
+      "2025-06-19": "present",
+      "2025-06-22": "present",
+      "2025-06-24": "absent",
+      "2025-06-26": "present",
+      "2025-06-29": "present",
+      "2025-07-01": "present",
+      "2025-07-03": "present",
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "recording",
+      "2025-06-27": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "recording",
+      "2025-11-28": "recording"
+    },
+    "S005": {
+      "2025-06-01": "present",
+      "2025-06-03": "present",
+      "2025-06-05": "present",
+      "2025-06-08": "present",
+      "2025-06-10": "absent",
+      "2025-06-12": "present",
+      "2025-06-15": "present",
+      "2025-06-17": "present",
+      "2025-06-19": "present",
+      "2025-06-22": "present",
+      "2025-06-24": "present",
+      "2025-06-26": "absent",
+      "2025-06-29": "present",
+      "2025-07-01": "present",
+      "2025-07-03": "present",
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "present"
+    },
+    "S006": {
+      "2025-06-01": "absent",
+      "2025-06-03": "present",
+      "2025-06-05": "absent",
+      "2025-06-08": "present",
+      "2025-06-10": "present",
+      "2025-06-12": "present",
+      "2025-06-15": "present",
+      "2025-06-17": "present",
+      "2025-06-19": "present",
+      "2025-06-22": "present",
+      "2025-06-24": "present",
+      "2025-06-26": "present",
+      "2025-06-29": "present",
+      "2025-07-01": "absent",
+      "2025-07-03": "present",
+      "2025-06-20": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "recording",
+      "2025-05-30": "present",
+      "2025-06-27": "present",
+      "2025-11-14": "present"
+    },
+    "S007": {
+      "2025-06-01": "present",
+      "2025-06-03": "absent",
+      "2025-06-05": "present",
+      "2025-06-08": "present",
+      "2025-06-10": "present",
+      "2025-06-12": "present",
+      "2025-06-15": "present",
+      "2025-06-17": "absent",
+      "2025-06-19": "present",
+      "2025-06-22": "absent",
+      "2025-06-24": "present",
+      "2025-06-26": "present",
+      "2025-06-29": "present",
+      "2025-07-01": "present",
+      "2025-07-03": "present",
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "present"
+    },
+    "S008": {
+      "2025-06-01": "present",
+      "2025-06-03": "present",
+      "2025-06-05": "present",
+      "2025-06-08": "present",
+      "2025-06-10": "present",
+      "2025-06-12": "absent",
+      "2025-06-15": "present",
+      "2025-06-17": "present",
+      "2025-06-19": "absent",
+      "2025-06-22": "present",
+      "2025-06-24": "present",
+      "2025-06-26": "present",
+      "2025-06-29": "present",
+      "2025-07-01": "present",
+      "2025-07-03": "absent",
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "present"
+    },
+    "S009": {
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "present"
+    },
+    "S010": {
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "recording",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "recording",
+      "2025-11-14": "present",
+      "2025-11-28": "absent"
+    },
+    "S011": {
+      "2025-05-09": "absent",
+      "2025-05-16": "present"
+    },
+    "S012": {
+      "2025-05-09": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "recording",
+      "2025-11-28": "present"
+    },
+    "S013": {
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-06-13": "present",
+      "2025-11-07": "recording",
+      "2025-11-14": "present"
+    },
+    "S014": {
+      "2025-06-20": "recording",
+      "2025-05-02": "recording",
+      "2025-05-09": "recording",
+      "2025-05-16": "present",
+      "2025-05-23": "recording",
+      "2025-05-30": "recording",
+      "2025-06-13": "recording",
+      "2025-06-27": "recording"
+    },
+    "S015": {
+      "2025-06-20": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "present"
+    },
+    "S016": {
+      "2025-06-20": "present",
+      "2025-05-02": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "absent",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "present"
+    },
+    "S017": {
+      "2025-06-20": "present",
+      "2025-05-09": "present",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "present",
+      "2025-11-14": "present",
+      "2025-11-28": "present"
+    },
+    "S018": {
+      "2025-06-20": "present",
+      "2025-05-02": "absent",
+      "2025-05-16": "present",
+      "2025-05-23": "present",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "present",
+      "2025-11-07": "present"
+    },
+    "S019": {
+      "2025-06-20": "present",
+      "2025-05-02": "absent",
+      "2025-05-30": "present",
+      "2025-06-13": "present",
+      "2025-06-27": "recording",
+      "2025-11-07": "recording",
+      "2025-11-14": "present"
+    },
+    "S020": {
+      "2025-11-07": "present",
+      "2025-11-14": "recording",
+      "2025-11-28": "present"
+    },
+    "S021": {
+      "2025-11-14": "present",
+      "2025-11-07": "present",
+      "2025-11-28": "present"
+    }
+  }
+} as const;
+
+export default studentAttendanceData;
