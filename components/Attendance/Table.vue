@@ -317,7 +317,7 @@
       const rect = table.getBoundingClientRect();
       const pixelRatio = Math.min(
         3,
-        Math.max(1, (window.devicePixelRatio || 1) * 2)
+        Math.max(1, (window.devicePixelRatio || 1) * 3)
       );
 
       const dataUrl = await toJpeg(table, {
