@@ -29,17 +29,13 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">
               Number of Classes
             </label>
-            <select
-              v-model="numberOfClasses"
-              class="border border-gray-300 rounded-md px-3 py-2"
-            >
-              <option value="5">Last 5 Classes</option>
-              <option value="7">Last 7 Classes</option>
-              <option value="10">Last 10 Classes</option>
-              <option value="15">Last 15 Classes</option>
-              <option value="20">Last 20 Classes</option>
-              <option value="30">Last 30 Classes</option>
-            </select>
+            <input
+              type="number"
+              v-model.number="numberOfClasses"
+              min="1"
+              class="border border-gray-300 rounded-md px-3 py-2 w-full"
+              placeholder="Enter number of classes"
+            />
           </div>
           <div v-if="viewPeriod === 'monthly'">
             <label class="block text-sm font-medium text-gray-700 mb-1">
