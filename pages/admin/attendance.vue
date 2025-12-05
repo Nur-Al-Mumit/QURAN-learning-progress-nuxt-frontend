@@ -21,25 +21,24 @@
               class="border border-gray-300 rounded-md px-3 py-2"
             >
               <option value="all">All Time</option>
-              <option value="weekly">Weekly</option>
+              <option value="lastClasses">Last Classes</option>
               <option value="monthly">Monthly</option>
             </select>
           </div>
-          <div v-if="viewPeriod === 'weekly'">
+          <div v-if="viewPeriod === 'lastClasses'">
             <label class="block text-sm font-medium text-gray-700 mb-1">
-              Select Week
+              Number of Classes
             </label>
             <select
-              v-model="selectedWeek"
+              v-model="numberOfClasses"
               class="border border-gray-300 rounded-md px-3 py-2"
             >
-              <option
-                v-for="week in availableWeeks"
-                :key="week.value"
-                :value="week.value"
-              >
-                {{ week.label }}
-              </option>
+              <option value="5">Last 5 Classes</option>
+              <option value="7">Last 7 Classes</option>
+              <option value="10">Last 10 Classes</option>
+              <option value="15">Last 15 Classes</option>
+              <option value="20">Last 20 Classes</option>
+              <option value="30">Last 30 Classes</option>
             </select>
           </div>
           <div v-if="viewPeriod === 'monthly'">
@@ -104,36 +103,10 @@
   // View options
   const viewPeriod = ref("all");
   const studentView = ref("all");
-  const selectedWeek = ref("");
   const selectedMonth = ref("");
+  const numberOfClasses = ref(7);
 
-  // Computed properties for available weeks and months
-  const availableWeeks = computed(() => {
-    const weeks = [];
-    const dates = [...studentAttendanceStore.classDates].sort();
-    const weekMap = new Map();
-
-    dates.forEach((date) => {
-      const dateObj = new Date(date);
-      const weekStart = getWeekStart(dateObj);
-      const weekEnd = getWeekEnd(dateObj);
-      const weekKey = weekStart.toISOString().split("T")[0];
-
-      if (!weekMap.has(weekKey)) {
-        weekMap.set(weekKey, {
-          value: weekKey,
-          label: `${formatDate(
-            weekStart.toISOString().split("T")[0]
-          )} - ${formatDate(weekEnd.toISOString().split("T")[0])}`,
-          start: weekStart,
-          end: weekEnd,
-        });
-      }
-    });
-
-    return Array.from(weekMap.values()).sort((a, b) => b.start - a.start);
-  });
-
+  // Computed properties for available months
   const availableMonths = computed(() => {
     const months = [];
     const dates = [...studentAttendanceStore.classDates].sort();
@@ -165,13 +138,10 @@
   const filteredDates = computed(() => {
     const dates = [...studentAttendanceStore.classDates].sort();
 
-    if (viewPeriod.value === "weekly" && selectedWeek.value) {
-      const weekStart = new Date(selectedWeek.value);
-      const weekEnd = getWeekEnd(weekStart);
-      return dates.filter((date) => {
-        const dateObj = new Date(date);
-        return dateObj >= weekStart && dateObj <= weekEnd;
-      });
+    if (viewPeriod.value === "lastClasses") {
+      // Return the last N classes based on user selection
+      const numClasses = parseInt(numberOfClasses.value);
+      return dates.slice(-numClasses);
     } else if (viewPeriod.value === "monthly" && selectedMonth.value) {
       const [year, month] = selectedMonth.value.split("-");
       return dates.filter((date) => {
@@ -186,26 +156,9 @@
     return dates;
   });
 
-  // Helper functions for week calculations
-  const getWeekStart = (date) => {
-    const d = new Date(date);
-    const day = d.getDay();
-    const diff = d.getDate() - day;
-    return new Date(d.setDate(diff));
-  };
-
-  const getWeekEnd = (date) => {
-    const d = new Date(date);
-    const day = d.getDay();
-    const diff = d.getDate() - day + 6;
-    return new Date(d.setDate(diff));
-  };
-
   // Period change handler
   const onPeriodChange = () => {
-    if (viewPeriod.value === "weekly" && availableWeeks.value.length > 0) {
-      selectedWeek.value = availableWeeks.value[0].value;
-    } else if (
+    if (
       viewPeriod.value === "monthly" &&
       availableMonths.value.length > 0
     ) {
@@ -221,10 +174,7 @@
       }
     });
 
-    // Initialize week and month selections
-    if (availableWeeks.value.length > 0) {
-      selectedWeek.value = availableWeeks.value[0].value;
-    }
+    // Initialize month selection
     if (availableMonths.value.length > 0) {
       selectedMonth.value = availableMonths.value[0].value;
     }
