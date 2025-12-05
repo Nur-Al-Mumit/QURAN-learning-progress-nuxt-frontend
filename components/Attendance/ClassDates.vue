@@ -160,11 +160,19 @@
   const currentPage = ref(1);
   const itemsPerPage = ref(30);
 
+  // Helper function to format date as YYYY-MM-DD in local timezone
+  const formatDateLocal = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
   // Set default date to today when modal opens
   watch(showAddDate, (isOpen) => {
     if (isOpen && !newClassDate.value) {
       const today = new Date();
-      newClassDate.value = today.toISOString().split("T")[0];
+      newClassDate.value = formatDateLocal(today);
     }
   });
 
@@ -172,7 +180,7 @@
   const minDate = computed(() => {
     const today = new Date();
     today.setMonth(today.getMonth() - 12);
-    return today.toISOString().split("T")[0];
+    return formatDateLocal(today);
   });
 
   const filteredAndSortedDates = computed(() => {
@@ -281,7 +289,7 @@
       date.setDate(date.getDate() + 1)
     ) {
       if (date.getDay() === 5) {
-        const fridayDate = date.toISOString().split("T")[0];
+        const fridayDate = formatDateLocal(date);
         fridays.push(fridayDate);
       }
     }
